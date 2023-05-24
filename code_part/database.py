@@ -4,7 +4,6 @@ from operator import itemgetter
 import numpy as np
 import librosa
 from scipy.ndimage import maximum_filter
-import plotly.express as px
 
 
 def find_peaks_maximum(sample, sampling_rate):
@@ -26,13 +25,11 @@ def find_peaks_maximum(sample, sampling_rate):
     xs = time_indices
     ys = frequencies
 
-    # fig = px.scatter(x=xs, y=ys, labels={'x': 'Time', 'y': 'Frequency'}, title="Constellation map")
-    # fig.show()
-
     zipped = zip(xs, ys)
     zipped = list(zipped)
     time_freq = [i for i in zipped if i[1] != 0.0]
     return time_freq
+
 
 def find_peaks_maximum_song(sample, sampling_rate):
     hop_length = 512
@@ -52,9 +49,6 @@ def find_peaks_maximum_song(sample, sampling_rate):
 
     xs = time_indices
     ys = frequencies
-
-    # fig = px.scatter(x=xs, y=ys, labels={'x': 'Time', 'y': 'Frequency'}, title="Constellation map")
-    # fig.show()
 
     zipped = zip(xs, ys)
     zipped = list(zipped)
@@ -94,6 +88,3 @@ def create_database():
             hashes = generate_hashes_song(peaks)
             database_of_song[f.split("../songs/")[1].split(".")[0]] = hashes
     return database_of_song
-
-
-# print(create_database())

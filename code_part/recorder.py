@@ -1,9 +1,6 @@
-# import required libraries
 import sounddevice as sd
 from scipy.io.wavfile import write
-import wavio as wv
 from fragment_fingerprinting import main_main
-import folium
 from flask import Flask, render_template, url_for, request
 
 def record_some():
@@ -16,7 +13,6 @@ def record_some():
     return "../unknown_songs/recording_for_test.wav"
 
 application = Flask(__name__)
-# object is created as "application" from module flask
 
 @application.route("/")
 def open_first_page():
@@ -24,9 +20,6 @@ def open_first_page():
 
 @application.route("/map", methods = ["POST"])
 def run_a_site():
-    """
-    Using of method POST for getting usernames and creating a mao according to that username
-    """
     main_func = record_some()
     song = main_main(main_func)
     return render_template('index2.html', variable=song)
@@ -34,4 +27,3 @@ def run_a_site():
 
 if __name__ == "__main__":
     application.run(port=8000, debug=True)
-
