@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+<!--    <link rel="stylesheet" href="../static/styles/style.css">-->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <p class="title">Listening</p>
+</head>
+<body>
+    <!-- <script src="recorder.js"></script> -->
+    <div class="logo">
+        <div id="c-shape"></div>
+        <div id="c-shape reverse"></div>
+        <div id="outer-circle"></div>
+        <div id="outer-circle-2"></div>
+    </div>
+    <br>
+    <div id="container">
+        <audio id="recorder" muted hidden></audio>
+
+        <form id = "buttons", name="test", action="{{ url_for('run_a_site') }}", method="post">
+            <button id="knopka">Record!</button>
+        </form>
+    </div>
